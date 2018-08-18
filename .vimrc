@@ -1,10 +1,15 @@
 execute pathogen#infect()
+
 syntax on
 colorscheme brogrammer 
 filetype plugin indent on
 
 autocmd FileType go set number fo+=croq tw=100
 autocmd Filetype go set makeprg=go\ build\ .
+
+set relativenumber
+set hlsearch
+set ignorecase
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -54,5 +59,35 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_checkers = ['gcc', 'clang_check']
+let g:syntastic_check_on_wq = 1
+let g:syntastic_cpp_checkers = ['clang_check', 'clang_tidy'] 
+
+let g:syntastic_python_checkers = ['flake8']
+
+let g:python_highlight_all = 1
+
+set number
+
+set clipboard=unnamed
+set tw=79
+"set colorcolumn=80
+"highlight ColorColumn ctermbg=233
+
+" Moving between splits without ctrl-w first
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+let g:pymode_lint_on_write = 0
+set autoindent
+set smartcase
+
+nmap <F8> :TagbarToggle<CR>
+
+nmap oo o<Esc>k
+nmap OO O<Esc>j
+
+let g:jedi#completions_enabled = 0
+
+set rtp+=/usr/local/opt/fzf
